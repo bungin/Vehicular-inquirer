@@ -45,7 +45,7 @@ class Motorbike extends Vehicle{
     // DOne: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
   wheelie(): void {
     console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`)
-  } //what if i want to make wheelie a boolean? ability to stop and log the wheelie state.
+  } //what if i want to make wheelie a boolean? ability to stop and log the wheelie state. man fuck that
   
   override printDetails(): void {
     super.printDetails();
