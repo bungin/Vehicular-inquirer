@@ -293,48 +293,57 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].printDetails();
+              this.performActions();
             }
           }
         } else if (answers.action === 'Start vehicle') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].start();
+              this.performActions();
             }
           }
-        } else if (answers.action === 'Accelerate 5 MPH') {
+        } else if (answers.action === 'Accelerate 5 MPH') {  
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              //if(logic for top speed) use another if statement instead of && in the first
               this.vehicles[i].accelerate(5);
+              this.performActions();
             }
           }
         } else if (answers.action === 'Decelerate 5 MPH') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].decelerate(5);
+              this.performActions();
             }
           }
         } else if (answers.action === 'Stop vehicle') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].stop();
+              this.performActions();
             }
           }
         } else if (answers.action === 'Turn right') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].turn('right');
+              this.performActions();
             }
           }
         } else if (answers.action === 'Turn left') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].turn('left');
+              this.performActions();
             }
           }
         } else if (answers.action === 'Reverse') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].reverse();
+              this.performActions();
             }
           }
         } else if (answers.action === 'Tow Vehicle') {
@@ -348,6 +357,7 @@ class Cli {
           }
           if (!truck) {
             console.log('You need a truck to tow.');
+            this.performActions();
           }
           else {
             this.findVehicleToTow(truck as Truck);
@@ -358,8 +368,10 @@ class Cli {
             const motorbike = this.vehicles[i] as Motorbike;
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
               motorbike.wheelie();
+              this.performActions();
             } else if (this.vehicles[i].vin !== this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
               console.log('You need a motorbike to wheelie.')
+              this.performActions();
             }
           }
         } else if (answers.action === 'Select or create another vehicle') {
@@ -369,7 +381,7 @@ class Cli {
           // exit the cli if the user selects exit
           this.exit = true;
         }
-        if (!this.exit && !this.findVehicleToTow) {
+        if (!this.exit && !this.findVehicleToTow) { //this syntax seems to be able to cause problems, atleast per 309 
           // if the user does not want to exit, perform actions on the selected vehicle
           this.performActions();
         }
